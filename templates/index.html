@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Wake up!</title>
+    <script>
+      function sendWakeOnLan() {
+        fetch("/api/wol")
+          .then((response) => response.json())
+          .then((data) => {
+            document.getElementById("btn").innerHTML = "Sent!";
+            document.getElementById("btn").classList.add("sent");
+          })
+          .catch((error) => console.error(error));
+      }
+    </script>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      button {
+        font-size: 2rem;
+        padding: 2rem;
+        border-radius: 10px;
+        background-color: #f58585;
+        color: white;
+        border: none;
+        font-weight: bold;
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+      }
+      .sent {
+        background-color: #40a565;
+      }
+    </style>
+  </head>
+  <body>
+    <button onclick="sendWakeOnLan()" id="btn">Wake up!</button>
+  </body>
+</html>

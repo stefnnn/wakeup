@@ -1,0 +1,13 @@
+[Unit]
+Description=Wakeup
+After=network.target
+
+[Service]
+User=pi
+Group=pi
+WorkingDirectory=~/wakeup/
+ExecStart=python server.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
