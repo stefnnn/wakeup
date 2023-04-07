@@ -6,7 +6,6 @@ import dotenv
 import os
 
 app = Flask(__name__)
-app.config['']
 
 dotenv.load_dotenv()
 MAC_ADDRESS = os.getenv('MAC_ADDRESS')
