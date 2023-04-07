@@ -11,6 +11,9 @@ dotenv.load_dotenv()
 MAC_ADDRESS = os.getenv('MAC_ADDRESS')
 PORT = os.getenv('PORT')
 
+if (MAC_ADDRESS is None):
+    raise Exception("MAC_ADDRESS is not set in .env file")
+
 # API endpoint to send wake-on-LAN packet to hardcoded host
 @app.route('/api/wol', methods=['GET'])
 def wake_on_lan():
@@ -20,7 +23,7 @@ def wake_on_lan():
         print("Sending WOL to " + MAC_ADDRESS)
         return jsonify({'message': 'Wake-on-LAN packet sent successfully.'})
     except Exception as e:
-        return jsonify({f'message': 'Failed to send wake-on-LAN packet: {e}'}), 500
+        return jsonify({'message': f'Failed to send wake-on-LAN packet: {e}'}), 500
 
 @app.route("/")
 def index():
