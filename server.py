@@ -6,6 +6,7 @@ import dotenv
 import os
 
 app = Flask(__name__)
+app.config['']
 
 dotenv.load_dotenv()
 MAC_ADDRESS = os.getenv('MAC_ADDRESS')
@@ -27,4 +28,4 @@ def index():
     return render_template('index.html')
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0')
