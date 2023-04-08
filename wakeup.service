@@ -5,7 +5,7 @@ After=network.target
 [Service]
 User=pi
 Group=pi
-WorkingDirectory=~/wakeup/
+WorkingDirectory=/home/pi/wakeup/
 ExecStart=python server.py
 Restart=always
 
